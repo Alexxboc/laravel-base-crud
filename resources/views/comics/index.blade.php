@@ -4,9 +4,9 @@
 
 
 
-<div class="container">
+<div class="container py-5">
   <div class="heading d-flex justify-content-between align-items-center">
-    <h1 class="p-5">comics</h1>
+    <h1 class="p-5">Comics</h1>
     <div>
       <a class="btn btn-primary d-block" href="{{route('comics.create')}}">Create comic</a>
     </div>
