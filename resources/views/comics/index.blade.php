@@ -19,7 +19,7 @@
         <th>thumb</th>
         <th>title</th>
         <th>description</th>
-        <th>cover image</th>
+        <th>price</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -32,7 +32,7 @@
         <td><img width="50" src="{{$comic->thumb}}" alt=""></td>
         <td>{{$comic->title}}</td>
         <td>{{$comic->description}}</td>
-        <td><img width="50" src="{{$comic->cover_image}}" alt=""></td>
+        <td>{{$comic->price}}</td>
         <td><a href="{{route('comics.show', $comic->id)}}">View</a>- Edit - Delete</td>
       </tr>
       @endforeach
