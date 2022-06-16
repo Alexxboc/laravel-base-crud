@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+/* Rotte per CRUD games*/
+Route::get('/comics', 'GameController@index')->name('comics.index');
+Route::get('/comics/create', 'GameController@create')->name('comics.create');
+Route::post('/comics', 'GameController@store')->name('comics.store');
+Route::get('/comics/{game}', 'GameController@show')->name('comics.show');
+
