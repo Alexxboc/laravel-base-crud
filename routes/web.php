@@ -18,8 +18,8 @@ Route::get('/', function () {
 })->name('welcome');
 
 /* Rotte per CRUD games*/
-Route::get('/comics', 'GameController@index')->name('comics.index');
-Route::get('/comics/create', 'GameController@create')->name('comics.create');
-Route::post('/comics', 'GameController@store')->name('comics.store');
-Route::get('/comics/{game}', 'GameController@show')->name('comics.show');
+Route::get('/comics', 'ComicController@index')->name('comics.index');
+Route::get('/comics/create', 'ComicController@create')->name('comics.create');
+Route::post('/comics', 'ComicController@store')->name('comics.store');
+Route::get('/comics/{comic}', 'ComicController@show')->name('comics.show');
 
