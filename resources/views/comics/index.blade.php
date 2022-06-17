@@ -36,12 +36,35 @@
         <td>
           <a class="btn btn-primary" href="{{route('comics.show', $comic->id)}}">View</a>
           <a class="btn btn-secondary" href="{{route('comics.edit', $comic->id)}}">Edit</a>
-          <form action="{{route('comics.destroy', $comic->id)}}" method="post">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
-          </td>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-comic-{{$comic->id}}">
+            Delete
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="delete-comic-{{$comic->id}}" tabindex="-1" role="dialog" aria-labelledby="modelTitle-{{$comic->id}}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Delete comic "<span class="text-primary">{{$comic->title}}</span> "</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Are you sure?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+                  <form action="{{route('comics.destroy',$comic->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input class="btn btn-danger" type="submit" value="Save">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
       </tr>
       @endforeach
     </tbody>
