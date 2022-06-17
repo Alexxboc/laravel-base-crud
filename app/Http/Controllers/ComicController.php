@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Comic;
+use App\Http\Requests\ComicRequest;
 use Illuminate\Http\Request;
+
 
 class ComicController extends Controller
 {
@@ -31,15 +34,15 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Requests\ComicRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
         //dd($request->all(), $request->title);
 
-        $data = $request->all();
-        Comic::create($data);
+        $validate_data = $request->validated();
+        Comic::create($validate_data);
 
 
         // pattern POST-REDIRECT-GET
@@ -66,19 +69,25 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact($comic));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request\ComicRequest  $request
      * @param  \App\Comic  $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(ComicRequest $request, Comic $comic)
     {
-        //
+        //dd($request->all(), $request->title);
+
+        $validate_data = $request->validated();
+        Comic::create($validate_data);
+
+        $comic->update($validate_data);
+        return redirect()->route('comics.show');
     }
 
     /**
@@ -89,6 +98,7 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }
